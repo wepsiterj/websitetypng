@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Form Test</title>
+</head>
+<body>
+    <div class="border">
+    <form id="myform">
+      <div class="side">
+        <h4>street</h4><input type="text"><br>
+        <h4>state</h4><input type="text"><br>
+        <h4>distric</h4><input type="text"><br>
+        <h4>distric pincode</h4><input type="text"><br>
+        <h4>d o b</h4><input type="date"><br>
+        <h4>explain your skill</h4> <input type="text" class="address">
+      </div>
+       <h4> firstname:</h4>         <input type="text">
+         <h4>lastname :</h4>         <input type="text">
+      
+        <h4> mothername:</h4>        <input type="text"><br>
+        <h4>fathername:  </h4>      <input type="text"><br>
+        <h4>qualification: </h4>    <input type="text"><br>
+        <h4>experiance yaers:</h4>  <input type="number"><br>
+        <h5>address          :</h5> <input type="text" class="address"><br>
+    </form>
+
+    <div class="btn">
+   <input type="button"  onclick="myfunction()" value="reset form"></div>
+   </div>
+    <!--key press sound play-->
+  <audio id="song" src="audio/audio1.mp3"></audio>
+   <script>
+    function myfunction(){
+        document.getElementById("myform").reset();
+    }
+    //mp3 song 
+const song = document.getElementById('song');
+    let isPlaying = false;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'a ','b' && !isPlaying) {
+        song.play();
+        isPlaying = true;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'a','b' && isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        isPlaying = false;
+      }
+    });
+</script>
+</body>
+</html>
+<style>
+    body{
+        background: linear-gradient(rgb(224, 222, 110),rgb(49, 238, 213));
+    }
+   #myform{
+        line-height: 10px;
+        padding-left:20% ;
+        margin-top: 5%;
+
+        
+    }
+  .address{
+    padding: 60px;
+    text-align: left;
+  }
+    
+  .btn{
+    margin-left: 60%;
+    padding: 30px;
+
+  }
+ .border{
+    border: 4px dotted greenyellow;
+ }
+  .side{
+   float: right;
+  }
+.side text{
+  padding: 20px 60px;
+}
+input{
+  font-size:x-large;
+  padding: 10px 30px
+  
+}
+</style>

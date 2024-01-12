@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>single word with seconds</title>
+  <style>
+    
+
+    
+    body {
+      background-image: url(image/Colors.jpg);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    
+    }
+    #word {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: aliceblue;
+    }
+    #input {
+      font-size: 24px;
+      padding: 5px;
+      width: 300px;
+      text-align: center;
+    }
+    #timer {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: aliceblue;
+    }
+    
+  </style>
+</head>
+<body>
+  <!--key press sound play-->
+  <audio id="song" src="audio/audio1.mp3"></audio>
+ 
+  <div id="word"></div>
+  <input type="text" id="input" autocomplete="off">
+  <div id="timer">Time left: <span id="time-left">60</span> seconds</div>
+  <button onclick="startGame()">Start Game</button>
+  
+
+  <script>
+    let words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon", "mango",
+     "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine", "watermelon","barnacle","krill","clam","squid","bengal","chausie","havana","korat","manx","somali","barbet","maltese","catfish",
+"clam",'clownfish',"codfish","dolphin","scallop","oyster","shark","bunny","chick","cygnet","fawn","tiger cub",
+"coati","cobra","coyote","iguana","blue whale","bonobo","dhole","drill"];
+    let timer;
+    let timeLeft = 60;
+    let wordIndex = 0;
+    let isGameStarted = false;
+
+    function displayWord() {
+      document.getElementById('word').innerText = words[wordIndex];
+    }
+
+    function startGame() {
+      if (!isGameStarted) {
+        isGameStarted = true;
+        wordIndex = 0;
+        timeLeft = 60;
+        document.getElementById('input').value = '';
+        document.getElementById('time-left').innerText = timeLeft;
+        displayWord();
+        timer = setInterval(countdown, 1000);
+      }
+    }
+
+    function countdown() {
+      timeLeft--;
+      document.getElementById('time-left').innerText = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }
+
+    function checkInput() {
+      const input = document.getElementById('input').value.trim().toLowerCase();
+      const currentWord = words[wordIndex];
+      if (input === currentWord) {
+        wordIndex++;
+        if (wordIndex < words.length) {
+          displayWord();
+          document.getElementById('input').value = '';
+        } else {
+          clearInterval(timer);
+          endGame();
+        }
+      }
+    }
+
+    function endGame() {
+      isGameStarted = false;
+      document.getElementById('word').innerText = 'Game Over!';
+      document.getElementById('input').value = '';
+      alert('Game Over! Your score: ' + wordIndex);
+    }
+
+    document.getElementById('input').addEventListener('input', checkInput);
+    //mp3 song 
+const song = document.getElementById('song');
+    let isPlaying = false;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'a ','b' && !isPlaying) {
+        song.play();
+        isPlaying = true;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'a','b' && isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
+</html>

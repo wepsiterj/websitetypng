@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  
+  body {
+    background: linear-gradient(to bottom left, cyan 50%, palegoldenrod 50%);
+   width: 100%;
+       font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  #game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/image1.jpg);
+  }
+  .falling-word {
+    position: absolute;
+    font-size: 24px;
+    color:rgb(53, 10, 243);
+    font-size: xx-large;
+    font-style: italic;
+  }
+  #score {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  #typing-bar {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #333;
+    width: 200px;
+    padding: 20px 100px;
+    margin-bottom: 30px;
+    font-size:x-large ;
+    
+      }
+</style>
+</head>
+
+
+</script>
+<body>
+  <!--key press sound play-->
+  <audio id="song" src="audio/audio1.mp3"></audio>
+<div id="game-container"></div>
+<p>Type the falling words:</p>
+<p id="score">Score: 0</p>
+<input type="text" id="typing-bar" autofocus>
+<script>
+  const words = ["apple", "banana", "cherry", "grape", "orange", "pear",
+  "cormorant","dove","eagle","duck","hen","kingfisher","magpie","goldfish","haddock","marlin","agouti","badger",
+  "capybara","dalmatian","fossa","hippo","adder","boa","cobra","gecko","green anole","anemone","bee","butterfly",
+  "caterpillar","cockroach","cocoon","coral","cuttlefish","moth","crab","earwig","fly","slug","spider","aat",
+  "backswimmer","caterpillar","dragonfly","earthworm","firefly","grasshopper","lace bug","plant bug","scarab beetle",
+"barnacle","krill","clam","squid","bengal","chausie","havana","korat","manx","somali","barbet","maltese","catfish",
+"clam",'clownfish',"codfish","dolphin","scallop","oyster","shark","bunny","chick","cygnet","fawn","tiger cub",
+"coati","cobra","coyote","iguana","blue whale","bonobo","dhole","drill"
+
+        ];
+
+const wordss=[]
+
+  const gameContainer = document.getElementById("game-container");
+  const scoreElement = document.getElementById("score");
+  const typingBar = document.getElementById("typing-bar");
+  let score = 0;
+
+  function generateRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+  }
+
+  function createFallingWord() {
+    const fallingWord = document.createElement("div");
+    fallingWord.className = "falling-word";
+    fallingWord.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+    fallingWord.textContent = generateRandomWord();
+    gameContainer.appendChild(fallingWord);
+
+    const animation = fallingWord.animate(
+      [
+        { transform: `translateY(-100px)` },
+        { transform: `translateY(${window.innerHeight}px)` }
+      ],
+      { duration: 50000, easing:"linear" }
+    );
+   
+    animation.onfinish = () => {
+      gameContainer.removeChild(fallingWord);
+    
+    };
+  }
+
+  function updateScore() {
+    scoreElement.textContent = `Score: ${score}`;
+  }
+
+  function checkWord(userInput) {
+    const fallingWords = document.getElementsByClassName("falling-word");
+    for (const word of fallingWords) {
+      if (word.textContent === userInput) {
+        score++;
+        updateScore();
+        gameContainer.removeChild(word);
+        createFallingWord();
+        typingBar.value = "";
+        break;
+      }
+    }
+  }
+
+  function gameLoop() {
+    createFallingWord();
+    setTimeout(gameLoop, 2000);
+  }
+
+  gameLoop();
+
+  typingBar.addEventListener("input", () => {
+    const userInput = typingBar.value.trim().toLowerCase();
+    checkWord(userInput);
+  });
+
+//mp3 song 
+const song = document.getElementById('song');
+    let isPlaying = false;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'a ','b' && !isPlaying) {
+        song.play();
+        isPlaying = true;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'a','b' && isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        isPlaying = false;
+      }
+    });
+</script>
+
+</body>
+</html>
