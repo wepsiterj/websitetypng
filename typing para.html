@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+ <title>sentence typing</title>
+</head>
+<body>
+  <!--key press sound play-->
+  <audio id="song" src="audio/audio1.mp3"></audio>
+  <div class="game-container">
+    <p id="sentence">Type this sentence as quickly as possible.</p>
+    <input type="text" id="input" placeholder="Start typing...">
+    <p id="feedback"></p>
+  </div>
+  <script src="script.js"></script>
+  <style>
+    body {
+      background-image: url(image/Colors.jpg);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+ 
+}
+#sentence{
+  font-size:x-large;
+}
+.game-container {
+  text-align: center;
+  color: aliceblue;
+}
+
+#input {
+  width: 300px;
+  padding: 8px;
+  margin-top: 10px;
+  font-size: larger;
+  
+}
+
+#feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+  </style>
+  <script>
+    const sentences = [
+  "every strike brings me closer to the next home run",
+  "i don’t walk away from things i think are unfinished",
+  "it is never too late to be what you might have been",
+  "either you run the day, or the day runs you",
+  "life shrinks or expands in proportion to one s courage",
+  "dream big and dare to fail",
+  "an unexamined life is not worth living",
+  "when i let go of what i am, i become what i might be",
+  "everything has beauty, but not everyone can see",
+  "not how long, but how well you have lived is the main thing",
+  "The best revenge is massive success",
+  "fall seven times and stand up eight",
+  "never let the fear of striking out keep you from playing the game",
+  "i would rather die of passion than of boredom",
+  "they motivate smokers to protect their families from second-hand smoke in the home",
+  "the purpose of your gym is to motivate you to exercise regularly",
+  "you re going to be motivated",
+  "goal you need to be motivated",
+  "in ancient egypt, must have motivated",
+  "a properly motivated and remunerated staff is a crucial element of all of this",
+  "we are a team of self-starters motivated by a generous bonus structure.",
+  "if you're a motivated, do-it-yourself kind of person, you can stage your home yourself.",
+  "schedules help keep us motivated, but goals give us something to work for",
+  "phonetically motivated parallels between child phonology and historical sound change",
+  "debate motivated by self-interest is better than no debate at all.",
+  "we are looking for a motivated self-starter who has excellent keyboard skills."
+];
+
+const sentenceElement = document.getElementById("sentence");
+const inputElement = document.getElementById("input");
+const feedbackElement = document.getElementById("feedback");
+
+let currentSentenceIndex = 0;
+
+function displayRandomSentence() {
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  currentSentenceIndex = randomIndex;
+  sentenceElement.textContent = sentences[randomIndex];
+  inputElement.value = "";
+  feedbackElement.textContent = "";
+}
+
+inputElement.addEventListener("input", checkInput);
+
+function checkInput() {
+  const typedText = inputElement.value;
+  const targetText = sentences[currentSentenceIndex];
+
+  if (typedText === targetText) {
+    feedbackElement.textContent = "Correct! Type the next sentence.";
+    setTimeout(displayRandomSentence, 1000);
+  } else if (targetText.startsWith(typedText)) {
+    feedbackElement.textContent = "Keep typing...";
+  } else {
+    feedbackElement.textContent = "Incorrect. Try again.";
+  }
+}
+
+displayRandomSentence();
+//mp3 song 
+const song = document.getElementById('song');
+    let isPlaying = false;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'a ','b' && !isPlaying) {
+        song.play();
+        isPlaying = true;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'a','b' && isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
+</html>

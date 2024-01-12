@@ -1,0 +1,178 @@
+*{
+    color: white;
+}
+body{
+    background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+  
+}
+.head{
+    padding: 20px;
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    color: white;
+    margin-left: 20px;
+}
+
+
+.head ul ol{
+    display: inline-flex;
+    font-size: x-large;
+    font-style: oblique;
+    text-transform: capitalize;
+    margin: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 15px;
+   transition: 0.5s;
+}
+.head ul ol:hover{
+   
+    background-color: antiquewhite;
+    color: black;
+    font-size: medium;
+    font-style: italic;
+    transition: 0.5s;
+}
+.head ul h1{
+    display: inline-flex;
+    text-transform: capitalize;
+}
+.title h2{
+    padding-left:70%;
+    font-size:xx-large;
+    
+   
+}
+/* brginning game code*/
+
+.cloumn{
+    float: left;
+    width: 30.33%;
+    padding: 3px;
+    margin: 10px;
+    margin-top: 30px;
+    border-radius: 15px;
+   
+   
+   
+}
+.cloumn p{
+    font-size:x-large;
+    padding-left: 30%;
+    padding-bottom: 20%;
+    transition: 0.5s;
+    color: #ec062d;
+}
+.cloumn p:hover{
+   color: rgb(248, 248, 248);
+   transition: 0.5s;
+}
+.image{
+    background-color: black;
+    
+}
+#i{
+    border-radius: 15px;
+    transition: 0.5s;
+}
+#i:hover{
+    border-bottom: 2px solid rgb(235, 42, 225);
+    border-top: 2px solid rgb(17, 224, 224);
+    border-left: 1px solid rgb(178, 231, 30);
+    border-right: 1px solid rgb(231, 127, 8);
+    border-radius: 15px;
+    transition: 0.5s;
+}
+/* finished */
+button{
+    padding: 20px 70px;
+    margin-left: 30%;
+    background-color: black;
+    color: aliceblue;
+    border: 1px solid white;
+    margin-top: 20px;
+    font-size: larger;
+    font-style: italic;
+    border-radius: 15px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+button:hover{
+    background-color: whitesmoke;
+    color: black;
+    border: 1px solid black;
+    font-size: larger;
+    font-style: italic;
+    transition: 0.5s;
+    
+}
+/* beginning game css*/
+
+
+/*drabdowun menu*/
+
+ .testimage img:hover{
+    border-bottom: 2px solid rgb(235, 42, 225);
+    border-top: 2px solid rgb(17, 224, 224);
+    border-left: 1px solid rgb(178, 231, 30);
+    border-right: 1px solid rgb(231, 127, 8);
+ }
+
+/*footer*/
+.footer{
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    padding: 30px;
+}
+
+
+
+
+/*footerlogo*/
+.head{
+    display: inline-flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.head h1{
+    padding-left: 20px;
+    margin-left: 40px;
+    border-bottom: 6px soid yellow;
+    
+}
+.head h3{
+    float: right;
+    color: lightgreen;
+}
+
+.logotopic{
+    display: inline-flex;
+   
+    
+}
+.logotopic p{
+    font-size: medium;
+   color: #490569;
+    padding-left: 100px;
+   text-transform: capitalize;
+   
+}
+
+.logotopic ul img{
+   padding: 10px;
+   margin-left: 15%;
+   border-radius: 15px;
+   
+}
+.logotopic ul img:hover{
+   background-color: rgb(59, 56, 56);
+   border: 15px;
+    transition: 0.5s;
+}
+.logotopic ul ol{
+    font-size: medium;
+    color: #490569;
+    padding-left: 130px;
+   text-transform: capitalize;;
+}
+.logotopic ul ol:hover{
+    color:white;
+}
+/* slide code*/
